@@ -15,9 +15,13 @@ $dirs = scandir($dir_to_scan);
 <body>
 <form action="" method="post">
 <?php
+function replace_backslash($str) {
+  return str_replace("\\", "/", $str);
+}
+
 foreach ($dirs as $dir) {
   if (is_dir($dir_to_scan.'/'.$dir)) {
-    if ($dir_to_scan.'/'.$dir != $_SERVER['DOCUMENT_ROOT'].'/..') {
+    if (replace_backslash($dir_to_scan).'/'.replace_backslash($dir) != replace_backslash($_SERVER['DOCUMENT_ROOT']).'/..') {
       echo '<button name="dir" type="submit" value="'.realpath($dir_to_scan.'/'.$dir).'"><span class="fa fa-folder"></span> '.$dir.'</button><br>';
     }
   } else {
