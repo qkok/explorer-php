@@ -8,7 +8,7 @@ if (file_exists($file)) {
   header('Expires: 0');
   header('Cache-Control: must-revalidate');
   header('Pragma: public');
-  header('Content-Length: ' . filesize($file));
+  header('Content-Length: '.filesize($file));
   readfile($file);
   exit;
 }
